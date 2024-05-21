@@ -2,6 +2,7 @@ package com.javatpoint.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,10 @@ public class BooksService {
 	public Books getBooksById(int id) {
 		return booksRepository.findById(id).get();
 	}
-
+	public Optional<Books> getBooksByName(String bookName) {
+		return booksRepository.findByBookname(bookName);
+	}
+	
 //saving a specific record by using the method save() of CrudRepository
 	public void saveOrUpdate(Books books) {
 		booksRepository.save(books);
@@ -41,4 +45,5 @@ public class BooksService {
 	public void update(Books books, int bookid) {
 		booksRepository.save(books);
 	}
+
 }
